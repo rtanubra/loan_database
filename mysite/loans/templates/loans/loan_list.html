@@ -1,0 +1,6 @@
+<h3>Loans originated by Rey Tanubrata</h3>
+<ol>
+{% for loan in object_list %}
+    <li>{{loan.loan_name}} - Outstanding: {{loan.loan_principal}}</li>
+{% endfor %}
+</ol>

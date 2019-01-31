@@ -9,5 +9,6 @@ class Loan(models.Model):
     loan_start_date = models.DateField(default=datetime.date.today())
     loan_starting_principal = models.DecimalField(max_digits=9,decimal_places=2)
     loan_principal = models.DecimalField(max_digits=9,decimal_places=2)
+    loan_last_action_date = models.DateField(default=datetime.date.today())
     loan_interest = models.DecimalField(max_digits =5, decimal_places=4) 
-    loan_amort_months = models.IntegerField()
+    loan_payment = models.DecimalField(max_digits=6,decimal_places=2,default=350)
