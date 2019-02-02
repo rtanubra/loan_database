@@ -1,8 +1,12 @@
-
+{% extends 'pages/header.html' %}
+{% block content %}
 <h3>Post a payment for {{loan.loan_name}}</h3>
+<p>Outstanding Principal: {{loan.loan_principal}}</p>
+<p>Last payment date {{loan.loan_last_action_date}}, Monthly Payment: {{loan.loan_payment}}</p>
 <form method=POST action="" >
     {% csrf_token %}
     {{form.as_p}}
-    <input type="submit" value="Commit Payment"  >
+    <input class='btn btn-outline-success' type="submit" value="Commit Payment"  >
 </form>
-<a href= "{% url 'loans:loan_list' %}" ><button>Return to Loans</button></a>
+<a href= "{% url 'loans:loan_list' %}" ><button type='button' class='btn btn-outline-info'  >Return to Loans</button></a>
+{% endblock %}

@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import date
 from loans.models import Loan
+from django.urls import reverse
 # Create your models here.
 
 class Payment(models.Model):
@@ -9,6 +10,9 @@ class Payment(models.Model):
     payment_loan = models.ForeignKey(Loan,on_delete=models.CASCADE)
     payment_amount = models.DecimalField(max_digits=7, decimal_places=2)
     payment_date = models.DateField(default=date.today())
+    
+    def get_absolute_url(self):
+        return reverse("payments:payment_list", kwargs={"loan_id":self.payment_loan.id})
 
 class PaymentTracker(models.Model):
     def __str__(self):
@@ -21,3 +25,6 @@ class PaymentTracker(models.Model):
     payment_principal_paid = models.DecimalField(max_digits=7, decimal_places=2)
     payment_post_principal = models.DecimalField(max_digits=10,decimal_places=2)
     payment_date = models.DateField(default=date.today())
+
+    def get_absolute_url(self):
+        return reverse("payments:payment_list", kwargs={"loan_id":self.payment_loan.id})

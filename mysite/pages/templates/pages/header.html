@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html lang = "en">
+<head>
+    <!-- basic.html -->
+    <title>My Loan Tracker</title>
+    <meta charset = "UTF-8" name="viewport" content="width-device-width , initial-scale=1"  />
+
+    <!--bootstrap stuff -->
+    {% load staticfiles %}
+    <link rel='stylesheet' href="{% static 'bases/css/bootstrap.min.css' %}" type ='text/css'/ >
+    <script src="{% static 'bases/js/bootstrap.min.js' %}" type="text/js" ></script>
+    
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+</head>
+<body>
+    {% block content %}
+    {% endblock %}
+
+    <br><br><br>
+</body>
+</html>

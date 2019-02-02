@@ -5,6 +5,7 @@ from loans.models import Loan
 from .forms import PaymentForm
 # Create your views here.
 from datetime import datetime, timedelta, date
+from django.urls import reverse
 from django.views.generic import (
     TemplateView,
     CreateView,
@@ -87,12 +88,14 @@ class PaymentCreateView(PaymentObjectMixin,View):
             loan.loan_last_action_date = new_payment.payment_date
             loan.save()
             loan_id = self.kwargs.get("loan_id")
+            loan = get_object_or_404(Loan,id=loan_id)
             initial_data = {
-            'payment_loan' : get_object_or_404(Loan,id=loan_id)
+            'payment_loan' : loan
             }
             form = PaymentForm(initial=initial_data,hide_condition=True)
             context = {
-                'form':form
+                'form':form,
+                'loan' : loan
             }
             return render(request,self.template_name,context)
 

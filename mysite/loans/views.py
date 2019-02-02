@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 
 from .models import Loan
+from .forms import LoanAddForm
 
 from django.views.generic import (
     CreateView,
@@ -13,5 +14,10 @@ from django.views.generic import (
 
 # Create your views here.
 class LoanListView(ListView):
-    template_name = "loan/loan_list.html"
+    template_name = "loans/loan_list.html"
     queryset = Loan.objects.all()
+
+class LoanCreateView(CreateView):
+    template_name = 'loans/loan_create.html'
+    form_class = LoanAddForm
+    

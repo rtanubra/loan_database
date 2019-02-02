@@ -1,7 +1,12 @@
+{% extends 'pages/header.html' %}
+{% block content %}
 <h3>Loans originated by Rey Tanubrata</h3>
 <ol>
 {% for loan in object_list %}
-    <li>{{loan.loan_name}} - Outstanding: {{loan.loan_principal}}</li>
-    <a href="{% url 'payments:payment_create' loan.id  %}" ><button>Make a Payment</button></a> <a href="{% url 'payments:payment_list' loan.id %}" ><button>detail view</button></a>
+    <li>{{loan.loan_name}} - Outstanding: {{loan.loan_principal}} Since - {{loan.loan_last_action_date}}</li>
+    <a href="{% url 'payments:payment_create' loan.id  %}" ><button type=button class='btn btn-outline-success' >Make a Payment</button></a> <a href="{% url 'payments:payment_list' loan.id %}" ><button type='button' class='btn btn-outline-info' >detail view</button></a>
 {% endfor %}
 </ol>
+
+<a href="{% url 'loans:loan_create' %}" ><button type=button class='btn btn-outline-primary' >Originate a New Loan</button></a>
+{% endblock %}

@@ -1,12 +1,7 @@
-<head>
-<style>
-table, th, td {
-  border: 1px solid black;
-}
-</style>
-</head>
+{% extends 'pages/header.html' %}
+{% block content %}
 <h1>{{loan}}</h1>
-{% if object_list|length > 1 %}
+{% if object_list|length > 0 %}
 <table>
     <thead>
         <tr>
@@ -36,3 +31,4 @@ table, th, td {
 {% endif %}
 
 <a href="{% url 'payments:payment_create' loan.id  %}" ><button>Make a Payment</button></a> <a href="{% url 'loans:loan_list' %}" ><button>Return to Loans</button></a>
+{% endblock %}
