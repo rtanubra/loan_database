@@ -9,3 +9,15 @@ class Payment(models.Model):
     payment_loan = models.ForeignKey(Loan,on_delete=models.CASCADE)
     payment_amount = models.DecimalField(max_digits=7, decimal_places=2)
     payment_date = models.DateField(default=date.today())
+
+class PaymentTracker(models.Model):
+    def __str__(self):
+        return f"Payment {self.payment_loan.loan_name} - {self.payment_date}-tracker"
+    payment_loan = models.ForeignKey(Loan,on_delete=models.CASCADE)
+    payment_pre_principal = models.DecimalField(max_digits=10,decimal_places=2)
+    payment_amount = models.DecimalField(max_digits=7, decimal_places=2)
+    payment_ipd = models.DecimalField(max_digits=7, decimal_places=2)
+    payment_interest_paid = models.DecimalField(max_digits=7, decimal_places=2)
+    payment_principal_paid = models.DecimalField(max_digits=7, decimal_places=2)
+    payment_post_principal = models.DecimalField(max_digits=10,decimal_places=2)
+    payment_date = models.DateField(default=date.today())

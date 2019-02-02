@@ -1,0 +1,8 @@
+
+<h3>Post a payment for {{loan.loan_name}}</h3>
+<form method=POST action="" >
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Commit Payment"  >
+</form>
+<a href= "{% url 'loans:loan_list' %}" ><button>Return to Loans</button></a>

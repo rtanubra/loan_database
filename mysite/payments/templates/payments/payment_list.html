@@ -1,0 +1,38 @@
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+</head>
+<h1>{{loan}}</h1>
+{% if object_list|length > 1 %}
+<table>
+    <thead>
+        <tr>
+            <th>date</th>
+            <th>Before</th>
+            <th>Payment</th>
+            <th>Interest paid</th>
+            <th>Principal paid</th>
+            <th>Post</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for payment in object_list %}
+        <tr>
+            <td>{{payment.payment_date}}</td>
+            <td>{{payment.payment_pre_principal}}</td>
+            <td>{{payment.payment_amount}}</td>
+            <td>{{payment.payment_interest_paid}}</td>
+            <td>{{payment.payment_principal_paid}}</td>
+            <td>{{payment.payment_post_principal}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+    <p>No Payments have been made yet, would you like to make the first payment?</p>
+{% endif %}
+
+<a href="{% url 'payments:payment_create' loan.id  %}" ><button>Make a Payment</button></a> <a href="{% url 'loans:loan_list' %}" ><button>Return to Loans</button></a>

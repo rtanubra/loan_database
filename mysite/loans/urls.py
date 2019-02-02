@@ -7,5 +7,5 @@ from .views import (
 
 app_name="loans"
 urlpatterns = [
-    path("",LoanListView.as_view(),name="article_list")
+    path("",LoanListView.as_view(),name="loan_list")
 ]

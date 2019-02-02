@@ -2,5 +2,6 @@
 <ol>
 {% for loan in object_list %}
     <li>{{loan.loan_name}} - Outstanding: {{loan.loan_principal}}</li>
+    <a href="{% url 'payments:payment_create' loan.id  %}" ><button>Make a Payment</button></a> <a href="{% url 'payments:payment_list' loan.id %}" ><button>detail view</button></a>
 {% endfor %}
 </ol>
