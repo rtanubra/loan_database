@@ -29,6 +29,6 @@
 {% else %}
     <p>No Payments have been made yet, would you like to make the first payment?</p>
 {% endif %}
-
-<a href="{% url 'payments:payment_create' loan.id  %}" ><button type=button class='btn btn-outline-success' >Make a Payment</button></a> <a href="{% url 'loans:loan_list' %}" ><button type=button class='btn btn-outline-info' >Return to Loans</button></a>
+<br>
+<a href="{% url 'payments:payment_create' loan.id  %}" ><button type=button class='btn btn-success' >Make a Payment</button></a> <a href="{% url 'loans:loan_list' %}" ><button type=button class='btn btn-info' >Return to Loans</button></a>
 {% endblock %}

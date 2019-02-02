@@ -3,7 +3,7 @@
 <form method=POST action="" >
     {% csrf_token %}
     {{form.as_p}}
-    <input type="submit" class='btn btn-outline-success' value="Originate Loan">
+    <input type="submit" class='btn btn-success' value="Originate Loan">
 </form>
-<a href="{% url 'loans:loan_list' %}" ><button type=button class='btn btn-outline-info' >Return To Loans </button></a>
+<a href="{% url 'loans:loan_list' %}" ><button type=button class='btn btn-info' >Return To Loans </button></a>
 {% endblock %}

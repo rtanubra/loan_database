@@ -1,12 +1,32 @@
 {% extends 'pages/header.html' %}
 {% block content %}
+<br>
 <h3>Loans originated by Rey Tanubrata</h3>
-<ol>
-{% for loan in object_list %}
-    <li>{{loan.loan_name}} - Outstanding: {{loan.loan_principal}} Since - {{loan.loan_last_action_date}}</li>
-    <a href="{% url 'payments:payment_create' loan.id  %}" ><button type=button class='btn btn-outline-success' >Make a Payment</button></a> <a href="{% url 'payments:payment_list' loan.id %}" ><button type='button' class='btn btn-outline-info' >detail view</button></a>
-{% endfor %}
-</ol>
+<table>
+    <thead>
+        <tr>
+            <th>Loan Name</th>
+            <th>Outstanding</th>
+            <th>Last Action</th>
+            <th>Monthly pmt</th>
+            <th>Make Payment</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for loan in object_list %}
+        <tr>
+            <td>{{loan.loan_name}}</td>
+            <td>{{loan.loan_principal}}</td>
+            <td>{{loan.loan_last_action_date}}</td>
+            <td>{{loan.loan_payment}}</td>
+            <td><a href="{% url 'payments:payment_create' loan.id  %}" ><button type=button class='btn btn-success' >Make a Payment</button></a></td>
+            <td><a href="{% url 'payments:payment_list' loan.id %}" ><button type='button' class='btn btn-info' >detail view</button></a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
-<a href="{% url 'loans:loan_create' %}" ><button type=button class='btn btn-outline-primary' >Originate a New Loan</button></a>
+<br>
+<a href="{% url 'loans:loan_create' %}" ><button type=button class='btn btn-primary' >Originate a New Loan</button></a>
 {% endblock %}
