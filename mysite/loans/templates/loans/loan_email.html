@@ -1,0 +1,11 @@
+{% extends 'pages/header.html' %}
+{% block content %}
+<h3>Email Current Summary</h3>
+<form method=POST action="">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type=submit class='btn btn-success' value="send email!" >
+</form>
+<br>
+<a href="{% url 'payments:payment_list' loan.id %}" ><button type='button' class='btn btn-info' >Back to Loan Details</button></a>
+{% endblock %}

@@ -10,5 +10,5 @@ app_name="loans"
 urlpatterns = [
     path("",LoanListView.as_view(),name="loan_list"),
     path("create/",LoanCreateView.as_view(),name="loan_create"),
-    path("send/",LoanEmailView.as_view(),name='loan_email')
+    path("<int:loan_id>/send/",LoanEmailView.as_view(),name='loan_email')
 ]
