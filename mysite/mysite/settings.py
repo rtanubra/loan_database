@@ -18,7 +18,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 sk = ""
-with open("sk.txt","r") as my_file:
+with open("mysite/sk.txt","r") as my_file:
     sk = my_file.readline()
 
 SECRET_KEY = sk

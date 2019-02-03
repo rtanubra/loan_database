@@ -20,4 +20,6 @@ class LoanListView(ListView):
 class LoanCreateView(CreateView):
     template_name = 'loans/loan_create.html'
     form_class = LoanAddForm
-    
+
+class LoanEmailView(View):
+    template_name = 'loans/loan_email.html'
