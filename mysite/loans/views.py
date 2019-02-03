@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 
 from .models import Loan
+from payments.models import PaymentTracker, Payment
 from .forms import LoanAddForm, LoanEmailForm
 
 from django.views.generic import (
@@ -95,11 +96,12 @@ class LoanEmailView(EmailSender,View):
             )
 
         form = LoanEmailForm()
+        object_list = PaymentTracker.objects.filter(payment_loan=loan)
         context ={
-            'form':form,
-            'loan':loan
+            'loan':loan,
+            "object_list":object_list
         }
-        return render(request,'loans/loan_email.html',context)
+        return render(request,'payments/payment_list.html',context)
         
     def get(self,request,*args,**kwargs):
         form = LoanEmailForm()
